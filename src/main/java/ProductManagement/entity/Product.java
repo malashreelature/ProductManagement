@@ -18,7 +18,7 @@ import java.util.Date;
     private Date manufacturer;
 
     @Column(name = "price")
-    private String price;
+    private Long price;
 
     @Column(name = "Description")
     private String Description;
@@ -50,11 +50,11 @@ import java.util.Date;
         this.manufacturer = manufacturer;
     }
 
-    public String getPrice() {
+    public Long getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 
@@ -76,7 +76,7 @@ import java.util.Date;
 
     public Product(){}
 
-    public Product(Long id, String name, Date manufacturer, String price, String description, int stocks) {
+    public Product(Long id, String name, Date manufacturer, Long price, String description, int stocks) {
         this.id = id;
         this.name = name;
         this.manufacturer = manufacturer;

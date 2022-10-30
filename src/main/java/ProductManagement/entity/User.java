@@ -17,19 +17,30 @@ import javax.persistence.*;
 
         private String lastName;
 
+        private Long wallets;
+
         public User() {
             super();
         }
-        public User(Long id, String email, String password, String firstName, String lastName) {
+        public User(Long id, String email, String password, String firstName, String lastName,Long wallets) {
             super();
             this.id = id;
             this.email = email;
             this.password = password;
             this.firstName = firstName;
             this.lastName = lastName;
-
+            this.wallets=wallets;
         }
-        public Long getId() {
+
+    public Long getWallets() {
+        return wallets;
+    }
+
+    public void setWallets(Long wallets) {
+        this.wallets = wallets;
+    }
+
+    public Long getId() {
             return id;
         }
         public void setId(Long id) {
