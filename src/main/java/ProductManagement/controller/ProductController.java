@@ -1,4 +1,4 @@
-package ProductManagement.Controller;
+package ProductManagement.controller;
 
 import ProductManagement.entity.Product;
 import ProductManagement.service.ProductService;
