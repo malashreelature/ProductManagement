@@ -2,11 +2,10 @@ package ProductManagement.entity;
 
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-    @Table(name = "userslist")
-    public class User {
+@Table(name = "userslist")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -22,13 +21,11 @@ import java.util.List;
     private Long wallet;
 
 
-
-    private List<Integer> productsBuyed;
+    private Integer productsBuyed;
 
     public User() {
         super();
     }
-
 
 
     public User(Long id, String name, String email, String password, String firstName, String lastName,
@@ -36,23 +33,23 @@ import java.util.List;
         super();
         this.id = id;
         this.email = email;
-        this.name=name;
+        this.name = name;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.wallet = wallet;
     }
 
-    public List<Integer> getProductBuyed() {
+    public Integer getProductsBuyed() {
         return productsBuyed;
     }
 
-    public void setProductBuyed(List<Integer> productBuyed) {
+    public void setProductsBuyed(Integer productsBuyed) {
         this.productsBuyed = productsBuyed;
     }
 
-    public User(List<Integer> productBuyed) {
-        this.productsBuyed = productBuyed;
+    public User(Integer productsBuyed) {
+        this.productsBuyed = productsBuyed;
     }
 
     public String getName() {
@@ -106,6 +103,7 @@ import java.util.List;
     public String getLastName() {
         return lastName;
     }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
