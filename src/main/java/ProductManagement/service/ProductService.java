@@ -10,5 +10,7 @@ public interface ProductService {
        void saveProduct(Product product);
         void deleteById(long id);
     Product update(Product product);
+
+    Product getById(Product product);
 }
 
