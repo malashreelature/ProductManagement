@@ -1,7 +1,7 @@
 package ProductManagement.service;
 
 import ProductManagement.entity.Product;
-import ProductManagement.repository.ProductRepo;
+import ProductManagement.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.Optional;
     public class ProductServiceImpl implements ProductService{
 
         @Autowired
-        private ProductRepo productRepo;
+        private ProductRepository productRepo;
 
         @Override
         public List<Product> findAll() {
@@ -32,6 +32,14 @@ import java.util.Optional;
     @Override
     public Product update(Product product) {
         return product;
+    }
+
+    @Override
+    public Product getById(Product product) {
+        Product productFromDb = productRepo.findById(product.getId()).get();
+        productFromDb.setStocks(productFromDb.getStocks()-1);
+        Product updatedProduct = productRepo.save(productFromDb);
+        return updatedProduct;
     }
 
 
