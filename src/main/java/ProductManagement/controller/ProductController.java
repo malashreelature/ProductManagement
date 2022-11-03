@@ -40,6 +40,12 @@ public class ProductController {
         productService.deleteById(id);
     }
 
+    @PostMapping("/buyproduct")
+    public Product buyProduct(@RequestBody Product product)
+    {       return productService.getById(product)  ;
+    }
+
+
     @PutMapping("/update")
     public Product update(@RequestBody Product product) {
         return productService.update(product);
