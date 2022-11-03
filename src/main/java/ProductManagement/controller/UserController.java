@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-@RestController
-public class UserController {
+    @RestController
+    public class UserController {
     @Autowired
     private UserService userService;
 
@@ -26,30 +26,31 @@ public class UserController {
 
 
     @GetMapping("/get")
-    public List<User> findAll(String username, String password) throws UserNotFoundException,
+    public List<User> findAll(@RequestHeader("email") String email, @RequestHeader("password") String password) throws UserNotFoundException,
             BadCredentialsException {
-        return userService.findAll(username, password);
-    }
-
-    @GetMapping("/get/{id}")
-    public User get(@PathVariable Long id) {
-        User user = this.userService.getById(id);
-        return user;
+        return userService.findAll(email, password);
     }
 
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<User> update(@RequestBody User user, @PathVariable Long id) {
-        User user1 = this.userService.update(user, id);
-        return new ResponseEntity<>(user1, HttpStatus.CREATED);
+
+    @PutMapping("/update")
+    public User update(@RequestHeader("email") String email,@RequestHeader("password") String password,@RequestBody
+      User user )throws UserNotFoundException, BadCredentialsException{
+
+        System.out.println(user);
+        return userService.findById(email, password ,user);
+    }
+    @PutMapping("/addMoney/{wallet}")
+    public User addMoney(@RequestHeader("email") String email,@RequestHeader("password") String password,@PathVariable
+                    Long wallet)throws UserNotFoundException, BadCredentialsException{
+        return userService.getById(email, password, wallet);
     }
 
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Map<String ,String>> createProduct(@PathVariable long id){
-        this.userService.delete(id);
-        Map<String, String> message = Map.of("message", " deleted successfully");
-        return  new ResponseEntity<>(message, HttpStatus.OK );
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> delete(@RequestHeader("email") String email,@RequestHeader("password") String password)throws UserNotFoundException, BadCredentialsException{
+        String status = userService.deleteById(email, password);
+        return ResponseEntity.ok(status);
     }
 
 }
