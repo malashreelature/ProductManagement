@@ -5,12 +5,10 @@ import ProductManagement.service.UserService;
 import ProductManagement.service.exception.BadCredentialsException;
 import ProductManagement.service.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
     @RestController
     public class UserController {
@@ -19,7 +17,7 @@ import java.util.Map;
 
 
     @PostMapping("/save")
-    public User saveProduct(@RequestBody User user) {
+    public User saveUser(@RequestBody User user) {
         userService.saveUser(user);
         return user;
     }

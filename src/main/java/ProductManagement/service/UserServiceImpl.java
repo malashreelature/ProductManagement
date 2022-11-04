@@ -31,9 +31,9 @@ public class UserServiceImpl implements UserService {
                 (String.format("User with username %s not found", email)));
         System.out.println("User from db: "+userFromDb);
         if (!userFromDb.getPassword().equals(password)) throw new BadCredentialsException("Bad Credentials");
-        user.setId(userFromDb.getId());
 
-       return userRepository.save(user);
+        user.setId(userFromDb.getId());
+        return userRepository.save(user);
     }
 
 
